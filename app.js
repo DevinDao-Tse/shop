@@ -4,12 +4,17 @@ const adminRoute = require('./routes/admin')
 const shopRoute = require('./routes/shops')
 const path = require('path')
 
+app.set('view engine', 'pug')
+app.set('views', 'views')
 
+
+//middlewares, routes, packages
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/admin', adminRoute)
+app.use('/admin', adminRoute.routes)
 app.use(shopRoute)
+
 
 
 //handling 404 error
