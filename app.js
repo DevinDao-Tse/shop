@@ -4,6 +4,8 @@ const adminRoute = require('./routes/admin')
 const shopRoute = require('./routes/shops')
 const path = require('path')
 
+//setting HTML templatte engine to pug
+//setting views for template
 app.set('view engine', 'pug')
 app.set('views', 'views')
 
@@ -19,7 +21,7 @@ app.use(shopRoute)
 
 //handling 404 error
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, 'views', '404.html'))
+  res.status(404).render('404', { docTitle: '404' })
 })
 
 app.listen(3000, () => {
