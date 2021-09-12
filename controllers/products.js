@@ -26,8 +26,19 @@ exports.getProducts = (req, res, next) => {
       activeShop: true,
       productCSS: true
     });
-  }
+  })
+}
 
-  )
+exports.editProduct = (req, res, next) => {
+  res.render('admin/edit-product', {
+    pageTitle: 'Edit',
+    path: '/admin/edit-product'
+  })
+}
 
+exports.getAdminProduct = (req, res, next) => {
+  res.render('admin/products', {
+    pageTitle: 'Admin Products',
+    path: '/admin/products'
+  })
 }

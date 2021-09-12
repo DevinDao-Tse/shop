@@ -7,5 +7,6 @@ const { getProducts } = require('../controllers/products')
 
 
 router.get('/', getProducts);
+// router.get('/index', )
 
 module.exports = router;
