@@ -9,13 +9,21 @@ exports.getAddProduct = (req, res, next) => {
     activeAddProduct: true
   })
 }
+exports.postAddProduct = (req, res, next) => {
+  const item = req.body;
+  const { title, imageURL, price, description } = item
+  const product = new Product(title, imageURL, description, price)
+  product.save()
+  res.redirect('/');
+}
 
-exports.getIndex = (req, res, next) => {
-  res.render('admin/add-product', {
-    pageTitle: 'Add Product',
-    path: '/admin/add-product',
-    formsCSS: true,
-    productCSS: true,
-    activeAddProduct: true
+exports.getProducts = (req, res, next) => {
+  Product.fetchAll(products => {
+    res.render('admin/products', {
+      prods: products,
+      pageTitle: 'Admin Products',
+      path: '/admin/products',
+    });
   })
 }
+
