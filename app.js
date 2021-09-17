@@ -3,6 +3,7 @@ const express = require('express');
 const expressHbs = require('express-handlebars');
 const app = express();
 const { get404Page } = require('./controllers/error')
+
 // app.engine('hbs', expressHbs({ layoutsDir: 'views/layouts/', defaultLayout: 'main-layout', extname: 'hbs' }));
 // app.set('view engine', 'hbs');
 // app.set('view engine', 'pug');
