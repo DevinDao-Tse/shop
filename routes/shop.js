@@ -10,6 +10,7 @@ router.get('/', getIndex);
 router.get('/products', getProducts)
 router.get('/products/:productID', getProductID)
 router.get('/cart', getCart)
+// router.post('/cart', addToCart)
 router.post('/cart', addToCart)
 router.get('/checkout', getCheckout)
 router.get('/orders', getOrders)
