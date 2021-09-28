@@ -56,6 +56,33 @@ exports.getOrders = (req, res, next) => {
   })
 }
 
+exports.getCart = (req, res, next) => {
+  Cart.getCart(cart => {
+    Product.fetchAll(products => {
+      const cartProducts = []
+      for (product of products) {
+        cartProductData = cart.products.find(prod => prod.id === product.id)
+        if (cart.products.find(prod => prod.id === product.id)) {
+          cartProducts.push({ productData: product, qty: cartProductData.qty })
+        }
+      }
+      res.render('shop/cart', {
+        path: '/cart',
+        pageTitle: 'Your Cart',
+        products: cartProducts
+      })
+    })
+  })
+}
+
+exports.cartDeleteItem = (req, res, next) => {
+  const { productID } = req.body
+  Product.findById(productID, product => {
+    Cart.deleteProduct(productID, product.price)
+    res.redirect('/cart')
+  })
+}
+
 exports.getCheckout = (req, res, next) => {
   res.render('shop/checkout', {
     path: '/checkout',
