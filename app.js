@@ -14,7 +14,7 @@ const User = require('./models/user')
 app.set('view engine', 'ejs')
 app.set('views', 'views');
 
-//adding comment from new COMP upgrade
+//adding comment from new COMP upgrade fixing comment from VS CODE
 
 const adminData = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
